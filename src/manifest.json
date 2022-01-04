@@ -1,9 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "__MSG_extName__",
-  "homepage_url": "http://localhost:8080/",
-  "description": "A Vue Browser Extension",
-  "default_locale": "en",
+  "name": "Our Standance",
+  "description": "Our Study Attendance",
   "permissions": [
     "<all_urls>",
     "*://*/*"
@@ -15,13 +13,13 @@
   },
   "background": {
     "scripts": [
-      "js/background.js"
+      "background.js"
     ],
     "persistent": false
   },
   "browser_action": {
-    "default_popup": "popup.html",
-    "default_title": "__MSG_extName__",
+    "default_popup": "index.html",
+    "default_title": "Our Standance!",
     "default_icon": {
       "19": "icons/19.png",
       "38": "icons/38.png"
