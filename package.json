@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service build --mode development --watch",
+    "serve": "cross-env NODE_ENV=development webpack --hide-modules --progress",
     "build": "cross-env NODE_ENV=production webpack --hide-modules --progress",
     "lint": "vue-cli-service lint"
   },
@@ -24,6 +24,7 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
+    "css-loader": "^3.4.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -34,7 +35,7 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.0.1",
     "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^7.3.1",
     "url-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.9.0",
     "vue-loader": "^15.4.2",
