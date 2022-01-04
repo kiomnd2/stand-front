@@ -58,7 +58,9 @@ const config = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    }),
     new webpack.DefinePlugin({
       global: 'window',
     }),
