@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Login from '../views/Login';
 import DashBoard from '../views/Dashboard';
 import BoardDetail from '../views/BoardDetail';
+import ItemRegister from '../components/ItemRegister';
 
 Vue.use(VueRouter);
 

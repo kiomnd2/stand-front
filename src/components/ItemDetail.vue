@@ -1,6 +1,9 @@
 <template>
   <div>
     <v-list-item>
+      <v-list-item-avatar>
+        <v-img :src="avatar"></v-img>
+      </v-list-item-avatar>
       <v-list-item-content>
         <v-list-item-title>
           <strong>{{ name }} ({{ id }})</strong>
@@ -15,11 +18,9 @@
             <v-icon v-if="isModify" @click="isModify = false" slot="append">mdi-check-bold</v-icon>
           </v-text-field>
         </v-list-item-subtitle>
-        <v-list-item-subtitle>
-          <v-file-input accept=".doc,.docx,.pdf" label="작성 자료"></v-file-input>
-        </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
+    <v-file-input accept=".doc,.docx,.pdf" label="작성 자료"></v-file-input>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ export default {
     title: String,
     name: String,
     subtitle: String,
+    avatar: String,
   },
   data() {
     return {
