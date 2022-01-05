@@ -17,8 +17,8 @@
           :icon="item.icon"
           fill-dot
         >
-          <v-expansion-panels v-model="item.panel">
-            <v-expansion-panel class="blue-grey white--text">
+          <v-expansion-panels v-model="item.panel" popout>
+            <v-expansion-panel :class="item.color" class="white--text">
               <v-expansion-panel-header>{{ item.title }}</v-expansion-panel-header>
               <v-expansion-panel-content>
                 <span>서브 타이틀</span>
@@ -65,19 +65,16 @@ export default {
             {
               id: 'kiomnd2',
               name: '김똥개',
-              title: '금일 수업은 좋았습니다',
               subtitle: `좋기는 개뿔`,
             },
             {
               id: 'kiomnd22',
               name: '김대빵',
-              title: '좀더 열심히 합시다',
-              subtitle: `대가리 빻기전에`,
+              subtitle: `저런저런`,
             },
             {
               id: 'kiomnd222',
               name: '김돌돌',
-              title: '이얏 타이틀',
               subtitle: ``,
             },
           ],

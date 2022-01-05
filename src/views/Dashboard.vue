@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <v-list two-line v-for="item in items" :key="item.id" rounded nav>
+      <v-list two-line v-for="item in items" :key="item.id" nav>
         <dashboard-panel
           :id="item.id"
           :title="item.title"
