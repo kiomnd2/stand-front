@@ -1,5 +1,9 @@
 <template>
-  <span>로그인 화면</span>
+  <v-row>
+    <v-col cols="12">
+      <v-card>로그인페이지</v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

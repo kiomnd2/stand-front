@@ -1,14 +1,26 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from '../views/Login';
+import DashBoard from '../views/Dashboard';
+import BoardDetail from '../views/BoardDetail';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Login',
+    path: '/login',
+    name: 'login',
     component: Login,
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: DashBoard,
+  },
+  {
+    path: '/detail',
+    name: 'detail',
+    component: BoardDetail,
   },
 ];
 
