@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <v-list two-line v-for="item in items" :key="item.id">
+      <v-list two-line v-for="item in items" :key="item.id" rounded nav>
         <dashboard-panel
           :id="item.id"
           :title="item.title"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import DashboardPanel from '../components/DashboardPanel';
+import DashboardPanel from '../components/DashboardItem';
 
 export default {
   name: 'Dashboard',
@@ -27,6 +27,24 @@ export default {
       items: [
         {
           id: 1,
+          headline: 'Brunch this weekend?',
+          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          title: 'Ali Connors',
+        },
+        {
+          id: 2,
+          headline: 'Brunch this weekend?',
+          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          title: 'Ali Connors',
+        },
+        {
+          id: 3,
+          headline: 'Brunch this weekend?',
+          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          title: 'Ali Connors',
+        },
+        {
+          id: 3,
           headline: 'Brunch this weekend?',
           subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
           title: 'Ali Connors',

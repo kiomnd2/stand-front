@@ -28,9 +28,11 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <v-container>
-        <router-view />
-      </v-container>
+      <v-card height="400px" outlined class="overflow-auto grey lighten-5">
+        <v-container>
+          <router-view />
+        </v-container>
+      </v-card>
     </v-main>
   </v-app>
 </template>
@@ -59,6 +61,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   width: 600px;
-  min-height: 400px;
+  height: 400px;
 }
 </style>
