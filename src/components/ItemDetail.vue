@@ -20,7 +20,7 @@
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
-    <v-file-input accept=".doc,.docx,.pdf" label="작성 자료"></v-file-input>
+    <v-file-input v-model="file" accept=".doc,.docx,.pdf" label="작성 자료"></v-file-input>
   </div>
 </template>
 
@@ -29,13 +29,13 @@ export default {
   name: 'ItemDetail',
   props: {
     id: String,
-    title: String,
     name: String,
     subtitle: String,
     avatar: String,
   },
   data() {
     return {
+      file: ['file.txt'],
       isModify: false,
     };
   },

@@ -1,23 +1,26 @@
 <template>
-  <v-form ref="form" v-model="valid" lazy-validation>
-    <v-text-field
-      v-model="name"
-      :counter="20"
-      :rules="titleRules"
-      label="타이틀"
-      required
-    ></v-text-field>
+  <v-card outlined>
+    <v-card-text>
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-text-field
+          v-model="name"
+          :counter="20"
+          :rules="titleRules"
+          label="타이틀"
+          required
+        ></v-text-field>
 
-    <v-text-field
-      v-model="description"
-      :counter="50"
-      :rules="descriptionRules"
-      label="간단설명글"
-      required
-    ></v-text-field>
-    <v-btn color="primary" @click="registerItem">등록</v-btn>
-    <v-btn color="error" @click="registerCancel" to="/detail">취소</v-btn>
-  </v-form>
+        <v-text-field
+          v-model="description"
+          :counter="50"
+          :rules="descriptionRules"
+          label="간단설명글"
+          required
+        ></v-text-field>
+        <v-btn color="primary" @click="registerItem">등록</v-btn>
+      </v-form>
+    </v-card-text>
+  </v-card>
 </template>
 <script>
 export default {

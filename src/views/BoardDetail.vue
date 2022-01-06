@@ -8,18 +8,43 @@
         {{ title }}
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn depressed small color="primary" @click="isRegister = true">등록</v-btn>
+      <div v-for="(a, i) in attendants" :key="a.id">
+        <v-avatar v-if="i < 2" color="grey darken-3">
+          <v-img class="elevation-3" alt="" :src="a.avatar"></v-img>
+        </v-avatar>
+        <v-avatar v-else-if="i === 2" color="blue lighten-5">
+          <v-icon>mdi-dots-horizontal</v-icon>
+        </v-avatar>
+      </div>
     </v-app-bar>
-    <v-card-subtitle>{{ subtitle }}</v-card-subtitle>
+
+    <v-card-actions>
+      <v-list-item>
+        <v-list-item-content>
+          {{ subtitle }}
+        </v-list-item-content>
+        <v-spacer></v-spacer>
+        <v-btn v-if="!isRegister" depressed small color="primary" @click="isRegister = true">
+          <span>등록</span>
+        </v-btn>
+        <v-btn
+          v-if="isRegister"
+          class="text--white"
+          depressed
+          small
+          color="red"
+          @click="isRegister = false"
+        >
+          <span class="text--white">등록취소</span>
+        </v-btn>
+      </v-list-item>
+    </v-card-actions>
+
     <v-card-text>
       <v-timeline dense>
         <v-slide-x-reverse-transition>
           <v-timeline-item v-if="isRegister" icon="mdi-plus" fill-dot color="red">
-            <v-card outlined hidden>
-              <v-card-text>
-                <item-register></item-register>
-              </v-card-text>
-            </v-card>
+            <item-register></item-register>
           </v-timeline-item>
         </v-slide-x-reverse-transition>
         <v-timeline-item
@@ -29,45 +54,12 @@
           :icon="item.icon"
           fill-dot
         >
-          <v-expansion-panels v-model="item.panel" popout>
-            <v-expansion-panel :class="item.color" class="white--text">
-              <v-expansion-panel-header>
-                {{ item.title }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-row>
-                  <v-col cols="12">
-                    <span>
-                      주차 간단 설명설명주차 간단 설명설명주차 간단 설명설명주차 간단 설명설명주차
-                      간단 설명설명주차 간단 설명설명주차 간단 설명설명주차 간단 설명설명주차 간단
-                      설명설명주차 간단 설명설명
-                    </span>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col cols="12">
-                    <strong>작성 일시 : {{ item.regDate }}</strong>
-                  </v-col>
-                </v-row>
-              </v-expansion-panel-content>
-              <v-expansion-panel-content>
-                <v-card outlined>
-                  <v-card-text>
-                    <v-list three-line v-for="(a, i) in item.attendants" :key="a.id">
-                      <item-detail
-                        :id="a.id"
-                        :name="a.name"
-                        :title="a.title"
-                        :subtitle="a.subtitle"
-                        :avatar="a.avatar"
-                      ></item-detail>
-                      <v-divider :key="i" v-if="i !== item.attendants.length - 1"></v-divider>
-                    </v-list>
-                  </v-card-text>
-                </v-card>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
+          <detail-panel
+            :color="item.color"
+            :title="item.title"
+            :regDate="item.regDate"
+            :panel="panel"
+          ></detail-panel>
         </v-timeline-item>
       </v-timeline>
     </v-card-text>
@@ -75,12 +67,12 @@
 </template>
 
 <script>
-import ItemDetail from '../components/ItemDetail';
 import ItemRegister from '../components/ItemRegister';
+import DetailPanel from './DetailPanel';
 
 export default {
   name: 'BoardDetail',
-  components: { ItemRegister, ItemDetail },
+  components: { DetailPanel, ItemRegister },
   data() {
     return {
       title: '타이틀',
@@ -94,26 +86,6 @@ export default {
           icon: 'mdi-star',
           regDate: '2022-01-01 11:10:25',
           panel: [],
-          attendants: [
-            {
-              id: 'kiomnd2',
-              name: '김똥개',
-              subtitle: `좋기는 개뿔`,
-              avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-            },
-            {
-              id: 'kiomnd22',
-              name: '김대빵',
-              subtitle: `저런저런`,
-              avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-            },
-            {
-              id: 'kiomnd222',
-              name: '김돌돌',
-              subtitle: ``,
-              avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-            },
-          ],
         },
         {
           title: '타이틀2',
@@ -121,7 +93,6 @@ export default {
           icon: 'mdi-book-variant',
           regDate: '2022-01-01',
           panel: [],
-          attendants: [],
         },
         {
           title: '타이틀3',
@@ -129,7 +100,23 @@ export default {
           icon: 'mdi-airballoon',
           regDate: '2022-01-01',
           panel: [],
-          attendants: [],
+        },
+      ],
+      attendants: [
+        {
+          id: 'kiomnd2',
+          name: '김똥개',
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+        },
+        {
+          id: 'kiomnd22',
+          name: '김대빵',
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+        },
+        {
+          id: 'kiomnd222',
+          name: '김돌돌',
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
         },
       ],
     };
