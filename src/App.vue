@@ -9,7 +9,8 @@
           <v-icon>mdi-account</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title class="text-h6">Login</v-list-item-title>
+          <v-list-item-title v-if="!isLogin" class="text-h6">Login</v-list-item-title>
+          <v-list-item-title v-else>{{ name }}님 반갑습니다.</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -29,8 +30,13 @@
     </v-navigation-drawer>
     <v-main>
       <v-card height="400px" outlined class="overflow-auto grey lighten-5">
-        <v-container>
+        <v-container v-if="isLogin">
           <router-view />
+        </v-container>
+        <v-container v-else>
+          <div class="text-center">
+            <v-progress-circular indeterminate color="primary"></v-progress-circular>
+          </div>
         </v-container>
       </v-card>
     </v-main>
@@ -43,6 +49,12 @@ export default {
   data() {
     return {
       mini: true,
+      isLogin: false,
+      id: '',
+      username: '',
+      email: '',
+      photoUrl: '',
+      userKey: '',
       items: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', to: '/dashboard' },
         { title: 'MyContents', icon: 'mdi-star-box-multiple-outline', to: '/myContents' },
@@ -68,20 +80,32 @@ export default {
           init,
         )
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            const { resourceName } = data;
+          .then((profile) => {
+            console.log(profile);
+            // 이름
+            this.name = profile.names[0].displayName;
+            this.email = profile.emailAddresses[0].value;
+            this.id = profile.emailAddresses[0].metadata.source.id;
+
+            console.log(this.id);
+            const { resourceName } = profile;
             fetch(
               `https://people.googleapis.com/v1/${resourceName}?personFields=photos&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE-xJQthZ8`,
               init,
             )
               .then((response) => response.json())
-              .then((data) => {
-                console.log(data);
+              .then((photo) => {
+                console.log(photo);
+                this.photoUrl = photo.photos[0].url;
+                this.isLogin = true;
+                this.$router.push('/dashboard');
               });
           });
       });
     },
+  },
+  created() {
+    this.executeLogin();
   },
 };
 </script>
