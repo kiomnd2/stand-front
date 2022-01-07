@@ -54,7 +54,6 @@ export default {
   methods: {
     executeLogin() {
       chrome.identity.getAuthToken({ interactive: true }, (token) => {
-        console.log(token);
         const init = {
           method: 'GET',
           async: true,
@@ -65,12 +64,21 @@ export default {
           contentType: 'json',
         };
         fetch(
-          'https://people.googleapis.com/v1/contactGroups/all?maxMembers=20&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE',
+          'https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE-xJQthZ8',
           init,
         )
           .then((response) => response.json())
-          .then(function (data) {
+          .then((data) => {
             console.log(data);
+            const { resourceName } = data;
+            fetch(
+              `https://people.googleapis.com/v1/${resourceName}?personFields=photos&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE-xJQthZ8`,
+              init,
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+              });
           });
       });
     },

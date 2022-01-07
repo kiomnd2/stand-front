@@ -9,12 +9,22 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <div v-for="(a, i) in attendants" :key="a.id">
-        <v-avatar v-if="i < 2" color="grey darken-3">
-          <v-img class="elevation-3" alt="" :src="a.avatar"></v-img>
-        </v-avatar>
-        <v-avatar v-else-if="i === 2" color="blue lighten-5">
-          <v-icon>mdi-dots-horizontal</v-icon>
-        </v-avatar>
+        <v-tooltip top v-if="i < 3">
+          <template v-slot:activator="{ on, attrs }">
+            <v-avatar color="grey darken-3" v-bind="attrs" v-on="on">
+              <v-img class="elevation-3" alt="" :src="a.avatar"></v-img>
+            </v-avatar>
+          </template>
+          <span>{{ a.name }}</span>
+        </v-tooltip>
+        <v-tooltip top v-else-if="i === 2">
+          <template v-slot:activator="{ on, attrs }">
+            <v-avatar v-bind="attrs" v-on="on" color="blue lighten-5">
+              <v-icon>{{ attendants.length - 2 }}</v-icon>
+            </v-avatar>
+          </template>
+          <span>{{ a.name }}</span>
+        </v-tooltip>
       </div>
     </v-app-bar>
 
