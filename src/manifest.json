@@ -4,12 +4,19 @@
   "description": "Our Study Attendance",
   "permissions": [
     "<all_urls>",
-    "*://*/*"
+    "*://*/*",
+    "identity",
+    "storage"
   ],
   "icons": {
     "16": "icons/16.png",
     "48": "icons/48.png",
     "128": "icons/128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxbTQwS09Mf00UM9lKVLt5pUq7/dbvl8uWo+F4ttXYshgYPT0XERvmgVSZWEfElUUr8tBQRe3JHqQaF7awudgnKUmYVSGlC4iuXf2gM8xfg3w5aJ7GM1hQnfK2lKfFSbbyURM4BAxSmanWhJIpg2AlC8iIffGku+5/6J+1wUt7m/ZbvW3Hedblb88YiKlE1EmJEUcGQGCciptfUWJlySmAJQrXJnY2gh+Rm6hzS0bQCBSEkHMzSCvLdTYOq6H4uBP2sYpzWkwt/nwcDV1MbECF+BI4JhXsHG3GHPq6YBcTvrE8KrI+VizLi2FOlE6qNhB4f93p2bmEo8tlua5zN7sRQIDAQAB",
+  "oauth2": {
+    "client_id": "681296405763-d5h2jgmabea8bn4ec0pjj8qqta72eh8a.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
   },
   "background": {
     "scripts": [

@@ -4,7 +4,7 @@
       <v-toolbar-title>스터디 출석부</v-toolbar-title>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" :mini-variant.sync="mini" permanent app>
-      <v-list-item link to="/login">
+      <v-list-item @click="executeLogin">
         <v-list-item-icon>
           <v-icon>mdi-account</v-icon>
         </v-list-item-icon>
@@ -50,6 +50,30 @@ export default {
       ],
       drawer: true,
     };
+  },
+  methods: {
+    executeLogin() {
+      chrome.identity.getAuthToken({ interactive: true }, (token) => {
+        console.log(token);
+        const init = {
+          method: 'GET',
+          async: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          contentType: 'json',
+        };
+        fetch(
+          'https://people.googleapis.com/v1/contactGroups/all?maxMembers=20&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE',
+          init,
+        )
+          .then((response) => response.json())
+          .then(function (data) {
+            console.log(data);
+          });
+      });
+    },
   },
 };
 </script>
