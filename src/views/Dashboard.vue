@@ -5,10 +5,8 @@
         <dashboard-panel
           :id="item.id"
           :title="item.title"
-          :headline="item.headline"
-          :subtitle="item.subtitle"
-          :current-joiner="1"
-          :max-joiner="8"
+          :description="item.description"
+          :joiner="1"
         ></dashboard-panel>
         <v-divider></v-divider>
       </v-list>
@@ -27,27 +25,27 @@ export default {
       items: [
         {
           id: 1,
-          headline: 'Brunch this weekend?',
-          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          description: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
           title: 'Ali Connors',
+          joiner: 1,
         },
         {
           id: 2,
-          headline: 'Brunch this weekend?',
-          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          description: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
           title: 'Ali Connors',
+          joiner: 1,
         },
         {
           id: 3,
-          headline: 'Brunch this weekend?',
-          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          description: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
           title: 'Ali Connors',
+          joiner: 1,
         },
         {
-          id: 3,
-          headline: 'Brunch this weekend?',
-          subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+          id: 4,
+          description: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
           title: 'Ali Connors',
+          joiner: 1,
         },
       ],
     };
