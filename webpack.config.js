@@ -4,6 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const { version } = require('./package.json');
+const env = require('dotenv').config().parsed;
 
 const config = {
   mode: process.env.NODE_ENV,
@@ -92,9 +93,7 @@ if (config.mode === 'production') {
   config.devtool = 'source-map';
   config.plugins = (config.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"',
-      },
+      API_KEY: JSON.stringify(env.API_KEY),
     }),
   ]);
 }

@@ -76,7 +76,7 @@ export default {
           contentType: 'json',
         };
         fetch(
-          'https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE-xJQthZ8',
+          `https://people.googleapis.com/v1/people/me?personFields=names,emailAddresses&key=${API_KEY}`,
           init,
         )
           .then((response) => response.json())
@@ -90,7 +90,7 @@ export default {
             console.log(this.id);
             const { resourceName } = profile;
             fetch(
-              `https://people.googleapis.com/v1/${resourceName}?personFields=photos&key=AIzaSyAj7X9uscEhQum2FzATMe6aCkE-xJQthZ8`,
+              `https://people.googleapis.com/v1/${resourceName}?personFields=photos&key=${API_KEY}`,
               init,
             )
               .then((response) => response.json())
