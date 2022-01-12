@@ -43,7 +43,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-
     'prefer-destructuring': ['error', {
       array: false,
       object: true,
@@ -60,5 +59,8 @@ module.exports = {
       printWidth: 100,
       htmlWhitespaceSensitivity: 'ignore',
     }],
-  }
+  },
+  globals: {
+    "API_KEY": true,
+  },
 }
